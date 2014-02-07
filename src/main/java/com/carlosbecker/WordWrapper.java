@@ -1,7 +1,13 @@
 package com.carlosbecker;
 
+import static com.google.common.base.CharMatcher.WHITESPACE;
+
 import java.util.ArrayList;
 import java.util.List;
+
+import com.google.common.base.Joiner;
+import com.google.common.base.Splitter;
+import com.google.common.collect.Lists;
 
 /**
  * @author carlos
@@ -25,41 +31,29 @@ public class WordWrapper {
 		return join(split(input));
 	}
 
-	private String[] split(String input) {
+	private List<String> split(String input) {
 		return splitOnLimit(splitOnSpace(input));
 	}
 
-	private String[] splitOnLimit(String[] words) {
+	private List<String> splitOnLimit(List<String> list) {
 		List<String> result = new ArrayList<String>();
-		for (String word : words) {
+		for (String word : list) {
 			result.addAll(splitOnLimit(word));
 		}
-		return result.toArray(new String[] {});
-	}
-
-	private List<String> splitOnLimit(String word) {
-		int i = 0;
-		List<String> result = new ArrayList<String>();
-		while (word.length() > i + lineLimit) {
-			result.add(word.substring(i, i + lineLimit));
-			i += lineLimit;
-		}
-		result.add(word.substring(i, word.length()));
 		return result;
 	}
 
-	private String[] splitOnSpace(String input) {
-		return input.split("\\s+");
+	private List<String> splitOnLimit(String word) {
+		Iterable<String> splitted = Splitter.fixedLength(lineLimit).split(word);
+		return Lists.newArrayList(splitted);
 	}
 
-	private String join(String[] lines) {
-		StringBuilder result = new StringBuilder();
-		for (int i = 0; i < lines.length;) {
-			result.append(lines[i]);
-			if (++i < lines.length)
-				result.append("\\n");
-		}
-		return result.toString();
+	private List<String> splitOnSpace(String input) {
+		return Splitter.on(WHITESPACE).splitToList(input);
+	}
+
+	private String join(List<String> list) {
+		return Joiner.on("\\n").join(list);
 	}
 
 	private boolean isValid(String input) {
