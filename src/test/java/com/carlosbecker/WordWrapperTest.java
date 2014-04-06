@@ -5,10 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- * @author carlos
- *
- */
 public class WordWrapperTest {
 	private static WordWrapper wrapper;
 
