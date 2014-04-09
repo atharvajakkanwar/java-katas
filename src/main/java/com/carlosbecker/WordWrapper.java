@@ -3,6 +3,7 @@ package com.carlosbecker;
 import java.util.ArrayList;
 
 import static java.util.Arrays.asList;
+import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.joining;
 
 /**
@@ -16,22 +17,20 @@ public class WordWrapper {
 		this.lineLimit = lineLimit;
 	}
 
-	/**
-	 * @param input
-	 * @return
-	 */
 	public String wrap(String input) {
 		if (!isValid(input))
 			return "";
-		return asList(input.split(" "))
-				.stream()
-				.map((word) -> asList(word.split("(?<=\\G.{" + lineLimit + "})")))
+		return stream(input.split(" "))
+				.map((word) -> asList(word.split(regex())))
 				.reduce(new ArrayList<>(), (list, words) -> {
 					list.addAll(words);
 					return list;
-				})
-				.stream()
+				}).stream()
 				.collect(joining("\\n"));
+	}
+
+	private String regex() {
+		return "(?<=\\G.{" + lineLimit + "})";
 	}
 
 	private boolean isValid(String input) {
