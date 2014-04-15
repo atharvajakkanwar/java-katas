@@ -2,7 +2,7 @@ package com.carlosbecker;
 
 /**
  * @author carlos
- * 
+ *
  */
 public class FizzBuzz {
 
@@ -18,5 +18,4 @@ public class FizzBuzz {
 			str += "buzz";
 		return str.isEmpty() ? number.toString() : str;
 	}
-
 }

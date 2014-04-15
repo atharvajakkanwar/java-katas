@@ -1,20 +1,16 @@
 package com.carlosbecker;
 
-import com.carlosbecker.fibonacci.*;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Before;
 import org.junit.Test;
 
-import static java.util.Arrays.stream;
-import static org.junit.Assert.assertEquals;
-
 public class FibonacciTest {
-	private Fibonacci[] impls;
+	private Fibonacci fib;
 
 	@Before
 	public void init() {
-		impls = new Fibonacci[]{new CachedTailRecursiveFibonacci(),
-				new TailRecursiveFibonacci(), new CachedFibonacciImpl(),
-				new FibonacciImpl()};
+		fib = new Fibonacci();
 	}
 
 	@Test
@@ -47,13 +43,13 @@ public class FibonacciTest {
 		test(1, -1);
 	}
 
-	@Test
+	@Test(timeout = 100)
 	public void testSlowCalculation() throws Exception {
-		test(6765, 20);
+		fib.calc(1000);
 	}
 
 
-	private void test(int expected, int param) {
-		stream(impls).forEach((fib) -> assertEquals(expected, fib.calc(param)));
+	private void test(long expected, long param) {
+		assertEquals(expected, fib.calc(param));
 	}
 }
