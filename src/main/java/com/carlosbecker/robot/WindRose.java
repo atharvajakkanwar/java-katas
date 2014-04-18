@@ -4,7 +4,7 @@ public enum WindRose {
 	N, E, S, W;
 
 	public WindRose getSibling(Side side) {
-		if (Side.L == side)
+		if (side == Side.L)
 			return leftSibling();
 		return rightSibling();
 	}

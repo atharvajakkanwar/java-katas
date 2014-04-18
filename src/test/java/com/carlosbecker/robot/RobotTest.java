@@ -1,6 +1,6 @@
 package com.carlosbecker.robot;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -18,6 +18,11 @@ public class RobotTest {
 		assertEquals("00N", robot.getPosition());
 	}
 
+	@Test
+	public void moveToNull() throws Exception {
+		assertEquals("00N", robot.move(null));
+	}
+	
 	@Test
 	public void moveToNowhere() throws Exception {
 		assertEquals("00N", robot.move(""));
