@@ -11,7 +11,7 @@ public class WordWrapper {
 	private String limitRegex;
 
 	public WordWrapper(int lineLimit) {
-		this.limitRegex = "(?<=\\G.{" + lineLimit + "})";;
+		this.limitRegex = "(?<=\\G.{" + lineLimit + "})";
 	}
 
 	public String wrap(String input) {
