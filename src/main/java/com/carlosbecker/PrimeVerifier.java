@@ -1,8 +1,5 @@
 package com.carlosbecker;
 
-/**
- * @author carlos
- */
 public class PrimeVerifier {
 	public boolean is(int number) {
 		return number > 1 && isPrime(number);
