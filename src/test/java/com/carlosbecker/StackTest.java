@@ -7,10 +7,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-/**
- * @author carlos
- *
- */
 public class StackTest {
 
 	private Stack stack;
