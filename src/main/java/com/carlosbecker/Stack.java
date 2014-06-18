@@ -1,9 +1,5 @@
 package com.carlosbecker;
 
-/**
- * @author carlos
- *
- */
 public class Stack {
 	private Integer[] elements;
 	private int size;
