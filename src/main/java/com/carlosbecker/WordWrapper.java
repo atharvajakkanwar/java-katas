@@ -6,9 +6,6 @@ import static java.util.Arrays.asList;
 import static java.util.Arrays.stream;
 import static java.util.stream.Collectors.joining;
 
-/**
- * @author carlos
- */
 public class WordWrapper {
 
 	private String limitRegex;
