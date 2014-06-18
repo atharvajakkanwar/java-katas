@@ -1,15 +1,7 @@
 package com.carlosbecker;
 
-/**
- * @author carlos
- *
- */
 public class FizzBuzz {
 
-	/**
-	 * @param number
-	 * @return
-	 */
 	public String exec(Integer number) {
 		String str = "";
 		if (number % 3 == 0)
