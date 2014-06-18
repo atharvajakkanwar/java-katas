@@ -3,3 +3,8 @@ script: mvn clean install
 jdk:
   - oraclejdk8
   - openjdk8
+
+notifications:
+  on_success: never
+  on_failure: change
+
