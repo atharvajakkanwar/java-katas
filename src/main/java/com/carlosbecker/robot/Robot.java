@@ -8,11 +8,11 @@ public class Robot {
 
 	public String move(String commands) {
 		if (commands != null && !commands.trim().isEmpty())
-			stream(commands.split("")).forEach(
-					command -> position.move(command));
+			stream(commands.split(""))
+				.forEach(command -> position.move(command));
 		return getPosition();
 	}
-	
+
 	public String getPosition() {
 		return position.toString();
 	}
